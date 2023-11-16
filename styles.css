@@ -3,8 +3,7 @@
  * that contains the map. 
  */
 #map {
-  height: 80%;
-  border-radius: 30px;
+  height: 100%;
 }
 
 /* 
@@ -14,7 +13,6 @@ html,
 body {
   height: 100%;
   margin: 0;
-  padding: 10px;
 }
 .gm-style-cc,
     .gm-bundled-control-maps-data { 
