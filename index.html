@@ -1,0 +1,1192 @@
+<html>
+  <head>
+    <title>Simple Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <!-- prettier-ignore -->
+    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+        ({key: "AIzaSyDLCCFBRq0l4Cv7OkAYdq1elVSDvpvudfI", v: "weekly"});</script>
+        <script>
+            async function initMap() {
+  const { Map } = await google.maps.importLibrary('maps');
+  const token =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzgsImlhdCI6MTY5OTk0MTE3NH0.nNRJgxaHJ5JepmsaaZIY_vjqXV_43Dk9p-zlXdrrHkA';
+
+
+  // Make a request to the API endpoint
+  try {
+    const assets = [
+      {
+        id: 11,
+        name: 'Maxi Fenix',
+        lat: 59.862663845516,
+        lng: 10.5060128867626,
+        type: 'boat',
+      },
+      {
+        id: 14,
+        name: 'Kragerø Vrakvika småbåthavn ',
+        lat: 58.8331351469246,
+        lng: 9.31123562157154,
+        type: 'dock',
+      },
+      {
+        id: 15,
+        name: 'Båtplass 8 På Hankø Marina',
+        lat: 59.2134587880928,
+        lng: 10.7890707626939,
+        type: 'dock',
+      },
+      {
+        id: 16,
+        name: 'Nordkapp Noblesse 760',
+        lat: 59.9100461990583,
+        lng: 10.7033145055175,
+        type: 'boat',
+      },
+      {
+        id: 17,
+        name: '29',
+        lat: 58.4639474451944,
+        lng: 8.79633564502001,
+        type: 'dock',
+      },
+      {
+        id: 18,
+        name: 'Finnmaster 62 DC',
+        lat: 59.9014798460137,
+        lng: 10.5959111452103,
+        type: 'boat',
+      },
+      {
+        id: 19,
+        name: 'Axopar Jobe Revolve 22',
+        lat: 59.9007301862805,
+        lng: 10.5949079990387,
+        type: 'boat',
+      },
+      {
+        id: 20,
+        name: 'Askeladden 4400',
+        lat: 59.8953924807206,
+        lng: 10.5884113535285,
+        type: 'boat',
+      },
+      {
+        id: 23,
+        name: 'Zodiac',
+        lat: 60.4213262892411,
+        lng: 5.14610230922699,
+        type: 'boat',
+      },
+      {
+        id: 24,
+        name: 'Sportis',
+        lat: 60.4213140423574,
+        lng: 5.14673363417387,
+        type: 'boat',
+      },
+      {
+        id: 25,
+        name: 'Bayliner 245',
+        lat: 59.3994696430209,
+        lng: 10.4717449843884,
+        type: 'boat',
+      },
+      {
+        id: 27,
+        name: 'Seastar 600',
+        lat: 66.7780826290882,
+        lng: 13.5118190199137,
+        type: 'boat',
+      },
+      {
+        id: 28,
+        name: 'Sea-Doo Spark Trixx ',
+        lat: 59.223497404186,
+        lng: 10.4275678284466,
+        type: 'jet_ski',
+      },
+      {
+        id: 29,
+        name: 'Øien 530',
+        lat: 62.1075416632734,
+        lng: 7.18113619834185,
+        type: 'boat',
+      },
+      {
+        id: 30,
+        name: 'Seadoo Spark Trixx 3up',
+        lat: 60.1815137443861,
+        lng: 5.08962873369455,
+        type: 'jet_ski',
+      },
+      {
+        id: 31,
+        name: 'Uttern D66 Exclusive',
+        lat: 60.3795518524664,
+        lng: 5.34004479646683,
+        type: 'boat',
+      },
+      {
+        id: 32,
+        name: 'Bayliner Daycruiser Caddy 642',
+        lat: 59.8912166092503,
+        lng: 10.5347108468413,
+        type: 'boat',
+      },
+      {
+        id: 33,
+        name: 'Monic Yachting Lillestrøm',
+        lat: -84.9840214155501,
+        lng: 179.828300736845,
+        type: 'dock',
+      },
+      {
+        id: 34,
+        name: 'Askeladden 2500',
+        lat: 59.0012513301154,
+        lng: 10.04224922508,
+        type: 'boat',
+      },
+      {
+        id: 35,
+        name: 'Askeladden 2500',
+        lat: 60.4169273753822,
+        lng: 5.3059421852231,
+        type: 'boat',
+      },
+      {
+        id: 37,
+        name: 'ASKELADDEN 705',
+        lat: 59.9102002309632,
+        lng: 10.6960366666317,
+        type: 'boat',
+      },
+      {
+        id: 38,
+        name: 'Skjerva Ålesund Sentrum',
+        lat: 62.4688031951228,
+        lng: 6.13141480833292,
+        type: 'dock',
+      },
+      {
+        id: 39,
+        name: 'Triton 225',
+        lat: 63.4360659510713,
+        lng: 10.4126364737749,
+        type: 'boat',
+      },
+      {
+        id: 40,
+        name: 'J54',
+        lat: 59.8788618368242,
+        lng: 10.508580096066,
+        type: 'dock',
+      },
+      {
+        id: 41,
+        name: 'HR Boat',
+        lat: 59.8766499279691,
+        lng: 10.7705189287663,
+        type: 'boat',
+      },
+      {
+        id: 42,
+        name: 'Oceanmaster',
+        lat: 59.9086678604015,
+        lng: 10.7253978028893,
+        type: 'boat',
+      },
+      {
+        id: 43,
+        name: 'Killingen ',
+        lat: 59.9117841329089,
+        lng: 10.6610160693526,
+        type: 'dock',
+      },
+      {
+        id: 45,
+        name: 'Skjelsbu - Ytterst Mot Syd',
+        lat: 59.0950291508515,
+        lng: 10.9148066863418,
+        type: 'dock',
+      },
+      {
+        id: 46,
+        name: 'Mariner Shogun 830',
+        lat: 59.8749586757971,
+        lng: 10.7766454294324,
+        type: 'boat',
+      },
+      {
+        id: 47,
+        name: 'Wester',
+        lat: 60.2954554111479,
+        lng: 11.1471527069807,
+        type: 'boat',
+      },
+      {
+        id: 48,
+        name: 'H30',
+        lat: 59.1772007239427,
+        lng: 11.1616725102067,
+        type: 'dock',
+      },
+      {
+        id: 49,
+        name: 'Pioner',
+        lat: 58.0743217509849,
+        lng: 7.77163021266461,
+        type: 'boat',
+      },
+      {
+        id: 51,
+        name: 'Flekkerøya plast',
+        lat: 58.074533269625,
+        lng: 7.77212675660849,
+        type: 'boat',
+      },
+      {
+        id: 52,
+        name: 'Ryds 478',
+        lat: 59.8741696421434,
+        lng: 10.754684843123,
+        type: 'boat',
+      },
+      {
+        id: 53,
+        name: 'Tangen Brygge',
+        lat: 59.7299995374745,
+        lng: 10.2463864535093,
+        type: 'dock',
+      },
+      {
+        id: 54,
+        name: 'D151',
+        lat: 59.1794294590573,
+        lng: 11.1621771007776,
+        type: 'dock',
+      },
+      {
+        id: 55,
+        name: 'Seadoo Spark Trixx ',
+        lat: 59.8096072860992,
+        lng: 10.4873034730554,
+        type: 'jet_ski',
+      },
+      {
+        id: 57,
+        name: 'Nr1',
+        lat: 59.8979697220205,
+        lng: 10.5929781496525,
+        type: 'dock',
+      },
+      {
+        id: 58,
+        name: 'SEADOO GTI SE 155',
+        lat: 59.1881339452075,
+        lng: 11.1713861301541,
+        type: 'jet_ski',
+      },
+      {
+        id: 59,
+        name: 'Sjøhusbrygga',
+        lat: 59.1262747610417,
+        lng: 10.2408054471016,
+        type: 'dock',
+      },
+      {
+        id: 61,
+        name: '246',
+        lat: 59.6774570693813,
+        lng: 10.622661486268,
+        type: 'dock',
+      },
+      {
+        id: 62,
+        name: 'Bekke Brygge',
+        lat: 59.5559794624282,
+        lng: 10.289371535182,
+        type: 'dock',
+      },
+      {
+        id: 63,
+        name: 'Strand',
+        lat: 59.8993495721062,
+        lng: 10.5964630097151,
+        type: 'dock',
+      },
+      {
+        id: 65,
+        name: 'Båthenger ',
+        lat: 59.4065072521137,
+        lng: 10.4840693995357,
+        type: 'dock',
+      },
+      {
+        id: 66,
+        name: 'SeaBird Discovery 430T',
+        lat: 59.6188389773272,
+        lng: 10.7480383291841,
+        type: 'kayak',
+      },
+      {
+        id: 67,
+        name: 'Ryds 515',
+        lat: 59.456647347426,
+        lng: 10.7962617650628,
+        type: 'boat',
+      },
+      {
+        id: 68,
+        name: 'J5',
+        lat: 59.894780343914,
+        lng: 10.5462755262852,
+        type: 'dock',
+      },
+      {
+        id: 69,
+        name: 'Brygge 3, 3. Ytterst På Innsiden',
+        lat: 59.8351860215883,
+        lng: 10.4731709137559,
+        type: 'dock',
+      },
+      {
+        id: 70,
+        name: 'West590Pro',
+        lat: 63.2860217698736,
+        lng: 8.13588190823793,
+        type: 'boat',
+      },
+      {
+        id: 71,
+        name: 'Goldfish Tender 28',
+        lat: 59.8790082153763,
+        lng: 10.5114889517426,
+        type: 'boat',
+      },
+      {
+        id: 72,
+        name: 'Uttern T57',
+        lat: 59.8976477039106,
+        lng: 10.6009161472321,
+        type: 'boat',
+      },
+      {
+        id: 73,
+        name: 'Yamarin ',
+        lat: 61.1048402693617,
+        lng: 10.4468195512891,
+        type: 'boat',
+      },
+      {
+        id: 74,
+        name: 'Båtplass Nr. 11',
+        lat: 59.105410219759,
+        lng: 10.9212305769324,
+        type: 'dock',
+      },
+      {
+        id: 75,
+        name: 'Scand Baltic',
+        lat: 59.1105049929955,
+        lng: 9.64055590331554,
+        type: 'boat',
+      },
+      {
+        id: 77,
+        name: 'Hvalstrand Marina ',
+        lat: 59.1139400990338,
+        lng: 10.8730728551745,
+        type: 'dock',
+      },
+      {
+        id: 78,
+        name: 'Fairline Targa ',
+        lat: 59.7233903023646,
+        lng: 10.7251936197281,
+        type: 'boat',
+      },
+      {
+        id: 79,
+        name: 'Seadoo GTR-x',
+        lat: 59.683317021111,
+        lng: 10.5325228348374,
+        type: 'jet_ski',
+      },
+      {
+        id: 80,
+        name: 'Hasle',
+        lat: 59.1490302842621,
+        lng: 10.9400912001729,
+        type: 'kayak',
+      },
+      {
+        id: 81,
+        name: 'Hasle Kano',
+        lat: 59.1555190656345,
+        lng: 10.9402414038777,
+        type: 'kayak',
+      },
+      {
+        id: 82,
+        name: 'Sting 485s',
+        lat: 58.0992986997576,
+        lng: 7.932422272861,
+        type: 'boat',
+      },
+      {
+        id: 83,
+        name: 'Teknofiber ',
+        lat: 59.2204516164519,
+        lng: 10.9187844023108,
+        type: 'boat',
+      },
+      {
+        id: 84,
+        name: 'Sun',
+        lat: 59.5255041010098,
+        lng: 10.6858489662409,
+        type: 'boat',
+      },
+      {
+        id: 85,
+        name: 'Bertram Fisherman Sport',
+        lat: 58.0707661910666,
+        lng: 7.70528862252831,
+        type: 'boat',
+      },
+      {
+        id: 87,
+        name: 'StaHøv Båtforening',
+        lat: 59.8980223544487,
+        lng: 10.5941395461559,
+        type: 'dock',
+      },
+      {
+        id: 88,
+        name: 'Båtplass',
+        lat: 62.8127808098144,
+        lng: 6.91034574061632,
+        type: 'dock',
+      },
+      {
+        id: 89,
+        name: 'Maxi 87',
+        lat: 69.6670364336746,
+        lng: 18.7550642341375,
+        type: 'boat',
+      },
+      {
+        id: 90,
+        name: 'Oslo-Bygdøy Killingen ',
+        lat: 59.9106695431216,
+        lng: 10.6597601249814,
+        type: 'dock',
+      },
+      {
+        id: 91,
+        name: 'Askeladden 515',
+        lat: 58.7942179206676,
+        lng: 9.37776546925306,
+        type: 'boat',
+      },
+      {
+        id: 92,
+        name: 'Rakkevik Båthavn',
+        lat: 59.2572112072924,
+        lng: 10.3750832006335,
+        type: 'dock',
+      },
+      {
+        id: 93,
+        name: 'Polar',
+        lat: 59.9254353671938,
+        lng: 10.7614735141397,
+        type: 'boat',
+      },
+      {
+        id: 94,
+        name: 'Capelli Tempest 900 WA',
+        lat: 59.2498988351756,
+        lng: 10.3825937211514,
+        type: 'boat',
+      },
+      {
+        id: 95,
+        name: 'Uttern S59',
+        lat: 59.6676540595161,
+        lng: 10.5704234540462,
+        type: 'boat',
+      },
+      {
+        id: 96,
+        name: 'Sea Doo Spark Trixx',
+        lat: 59.178096427,
+        lng: 11.161905862391,
+        type: 'jet_ski',
+      },
+      {
+        id: 97,
+        name: 'Skibsplast Vector 555 X',
+        lat: 59.9164009363954,
+        lng: 10.6882307678461,
+        type: 'boat',
+      },
+      {
+        id: 98,
+        name: 'Sjøsenteret Plass Nr 345, Brygge nr 2',
+        lat: 59.6795359783998,
+        lng: 10.6217666342854,
+        type: 'dock',
+      },
+      {
+        id: 99,
+        name: 'Strand Båtforening',
+        lat: 59.8981104673367,
+        lng: 10.594031251967,
+        type: 'dock',
+      },
+      {
+        id: 100,
+        name: 'Uttern Exclusive',
+        lat: 59.2111903969275,
+        lng: 9.61281817406416,
+        type: 'boat',
+      },
+      {
+        id: 101,
+        name: 'Century 2301',
+        lat: 58.3623827343577,
+        lng: 11.246847063303,
+        type: 'boat',
+      },
+      {
+        id: 102,
+        name: 'Yamarin',
+        lat: 59.8726768381901,
+        lng: 10.5174447968602,
+        type: 'boat',
+      },
+      {
+        id: 104,
+        name: 'Taho Q6',
+        lat: 63.4388769293717,
+        lng: 10.5042674392462,
+        type: 'boat',
+      },
+      {
+        id: 105,
+        name: 'Goldfish 21 Sport',
+        lat: 58.166976838704,
+        lng: 8.04123613983393,
+        type: 'boat',
+      },
+      {
+        id: 106,
+        name: 'Austrevågen',
+        lat: 60.2252027800865,
+        lng: 5.30180621892214,
+        type: 'dock',
+      },
+      {
+        id: 112,
+        name: '2022 ',
+        lat: 60.4254846670511,
+        lng: 4.96232740581036,
+        type: 'boat',
+      },
+      {
+        id: 113,
+        name: 'Benetau Antares 8',
+        lat: 60.353946414021,
+        lng: 5.18899887800217,
+        type: 'boat',
+      },
+      {
+        id: 116,
+        name: 'Sting 600',
+        lat: 70.0607156021484,
+        lng: 19.0484147518873,
+        type: 'boat',
+      },
+      {
+        id: 117,
+        name: 'Gp1800',
+        lat: 70.0598571732114,
+        lng: 19.0473926626146,
+        type: 'jet_ski',
+      },
+      {
+        id: 119,
+        name: 'Cappeli CAP 500',
+        lat: 58.8643338827271,
+        lng: 9.40916776657104,
+        type: 'boat',
+      },
+      {
+        id: 122,
+        name: 'Hasle Summerfun',
+        lat: 58.1299191409572,
+        lng: 8.06807432323694,
+        type: 'boat',
+      },
+      {
+        id: 123,
+        name: 'Oventangen',
+        lat: 59.3107501596926,
+        lng: 10.7239014655352,
+        type: 'dock',
+      },
+      {
+        id: 124,
+        name: 'Triss Magnum',
+        lat: 58.915423281574,
+        lng: 5.74538491666317,
+        type: 'boat',
+      },
+      {
+        id: 125,
+        name: 'Nr 58.',
+        lat: 62.3248793566038,
+        lng: 5.655257999897,
+        type: 'dock',
+      },
+      {
+        id: 126,
+        name: 'Alufish 276',
+        lat: 60.9234521069463,
+        lng: 11.6180044412613,
+        type: 'kayak',
+      },
+      {
+        id: 127,
+        name: 'Øien 530',
+        lat: 64.7355686359701,
+        lng: 11.1908217519522,
+        type: 'boat',
+      },
+      {
+        id: 128,
+        name: 'Uttern C77 ',
+        lat: 60.1748615479117,
+        lng: 5.37893917411566,
+        type: 'boat',
+      },
+      {
+        id: 129,
+        name: 'Kaasbøl 590',
+        lat: 67.5210097450911,
+        lng: 14.7573302686214,
+        type: 'boat',
+      },
+      {
+        id: 130,
+        name: 'Askeladden Bowrider',
+        lat: 59.8627761238105,
+        lng: 10.6722910702229,
+        type: 'boat',
+      },
+      {
+        id: 131,
+        name: 'Ryds 478 GTI',
+        lat: 59.5614103592162,
+        lng: 10.4298394918442,
+        type: 'boat',
+      },
+      {
+        id: 132,
+        name: 'Plass nr 14',
+        lat: 59.5622353385813,
+        lng: 10.4291826859117,
+        type: 'dock',
+      },
+      {
+        id: 133,
+        name: 'NB 840 Fly',
+        lat: 59.2258734053619,
+        lng: 10.9800115227699,
+        type: 'boat',
+      },
+      {
+        id: 134,
+        name: 'Larson Cabrio 927 ',
+        lat: 59.1775319340985,
+        lng: 11.1621603369713,
+        type: 'boat',
+      },
+      {
+        id: 135,
+        name: '2006',
+        lat: 58.3243391897597,
+        lng: 8.58053851872683,
+        type: 'boat',
+      },
+      {
+        id: 136,
+        name: 'Skjærgårdsjeep',
+        lat: 59.0002922870581,
+        lng: 10.0423437729478,
+        type: 'boat',
+      },
+      {
+        id: 138,
+        name: 'Uttern D65',
+        lat: 60.3797130888174,
+        lng: 5.32718494534492,
+        type: 'boat',
+      },
+      {
+        id: 139,
+        name: 'Askeladden 430',
+        lat: 58.2127591372433,
+        lng: 8.29980041831732,
+        type: 'boat',
+      },
+      {
+        id: 140,
+        name: 'Libo 14',
+        lat: 60.6877124257523,
+        lng: 10.6198927760124,
+        type: 'boat',
+      },
+      {
+        id: 141,
+        name: 'Grasholmbryggå 28c AS - 6meter',
+        lat: 58.9754309067443,
+        lng: 5.74312180280685,
+        type: 'dock',
+      },
+      {
+        id: 142,
+        name: 'Grasholmbryggå 28c AS - 5meter',
+        lat: 58.9753972101058,
+        lng: 5.74309900403023,
+        type: 'dock',
+      },
+      {
+        id: 143,
+        name: 'Eikevik',
+        lat: 61.5558967738753,
+        lng: 5.16003839671612,
+        type: 'dock',
+      },
+      {
+        id: 144,
+        name: 'Smartliner 150',
+        lat: 59.9055085470592,
+        lng: 10.2711519598961,
+        type: 'boat',
+      },
+      {
+        id: 145,
+        name: 'River 460XR',
+        lat: 58.9081969914274,
+        lng: 6.1010280624032,
+        type: 'boat',
+      },
+      {
+        id: 146,
+        name: 'Iron 767',
+        lat: 58.9947797752152,
+        lng: 9.85677346587181,
+        type: 'boat',
+      },
+      {
+        id: 147,
+        name: 'Bavaria Sport ',
+        lat: 59.9126840473506,
+        lng: 10.6990256533027,
+        type: 'boat',
+      },
+      {
+        id: 148,
+        name: '1988',
+        lat: 60.312611525312,
+        lng: 4.983223490417,
+        type: 'boat',
+      },
+      {
+        id: 149,
+        name: 'Uttern D68',
+        lat: 60.1409790980969,
+        lng: 5.44046871364117,
+        type: 'boat',
+      },
+      {
+        id: 150,
+        name: 'Selby Seafigther',
+        lat: 59.4019263719843,
+        lng: 10.422822162509,
+        type: 'boat',
+      },
+      {
+        id: 151,
+        name: 'Ally Kano',
+        lat: -89.9996003800025,
+        lng: -180,
+        type: 'kayak',
+      },
+      {
+        id: 152,
+        name: 'Norline 8500',
+        lat: 68.501396832975,
+        lng: 14.8160998150706,
+        type: 'boat',
+      },
+      {
+        id: 153,
+        name: 'Oceanrunner',
+        lat: 59.0013171187301,
+        lng: 10.0449398159981,
+        type: 'boat',
+      },
+      {
+        id: 154,
+        name: 'Glastron Spirit 165',
+        lat: 62.2826502720024,
+        lng: 5.82869164645672,
+        type: 'boat',
+      },
+      {
+        id: 155,
+        name: 'Askeladden P80 Weekend',
+        lat: 60.453121260822,
+        lng: 5.10571980848908,
+        type: 'boat',
+      },
+      {
+        id: 156,
+        name: 'Pioner Multi',
+        lat: 60.4533280167882,
+        lng: 5.10570555925369,
+        type: 'boat',
+      },
+      {
+        id: 157,
+        name: '2stk Havkajakk (Pris Pr Stk)',
+        lat: 60.4548892424959,
+        lng: 5.10463636368513,
+        type: 'kayak',
+      },
+      {
+        id: 158,
+        name: 'Testing Boat',
+        lat: 34.0248720173211,
+        lng: 71.535796187818,
+        type: 'boat',
+      },
+      {
+        id: 163,
+        name: 'Øien ',
+        lat: 60.2645964002882,
+        lng: 6.11242510378361,
+        type: 'boat',
+      },
+      {
+        id: 164,
+        name: 'Øien 530',
+        lat: 60.2645964002882,
+        lng: 6.11242510378361,
+        type: 'boat',
+      },
+      {
+        id: 165,
+        name: 'Øien 530',
+        lat: 60.367915872216,
+        lng: 6.15999106317759,
+        type: 'boat',
+      },
+      {
+        id: 166,
+        name: 'Nidelv 730',
+        lat: 59.2510996452692,
+        lng: 10.4304889217019,
+        type: 'boat',
+      },
+      {
+        id: 167,
+        name: 'Sting 600 Pro',
+        lat: 67.3088329776317,
+        lng: 14.4356100261211,
+        type: 'boat',
+      },
+      {
+        id: 168,
+        name: 'Bella 620',
+        lat: 59.1132840165928,
+        lng: 11.3862381130457,
+        type: 'boat',
+      },
+      {
+        id: 169,
+        name: 'Seadoo GTX 260',
+        lat: 58.9391639499361,
+        lng: 5.59446942061186,
+        type: 'jet_ski',
+      },
+      {
+        id: 171,
+        name: 'Hansvik 18 Combi',
+        lat: 60.3907451946441,
+        lng: 5.22876463830471,
+        type: 'boat',
+      },
+    ];
+
+    // Continue with map initialization
+    const norwayBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(58.0, 4.5),
+      new google.maps.LatLng(71.5, 31.5)
+    );
+
+    const map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: 65.472, lng: 16.4689 },
+      zoom: 4.6,
+      zoomControl: false,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
+      styles: [
+         {
+            featureType: 'administrative.country',
+            elementType: 'labels',
+            stylers: [{ visibility: 'off' }] // Hide country labels
+          },
+           {
+            featureType: 'administrative.city',
+            elementType: 'labels',
+            stylers: [{ visibility: 'off' }] // Hide country labels
+          },
+        {
+          elementType: 'geometry.stroke',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          elementType: 'labels.icon',
+          stylers: [
+            {
+              color: '#18374F',
+            },
+          ],
+        },
+        {
+          elementType: 'labels.text.fill',
+          stylers: [
+            {
+              color: '#18374F',
+            },
+          ],
+        },
+        {
+          featureType: 'administrative.land_parcel',
+          elementType: 'labels',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'landscape.man_made',
+          stylers: [
+            {
+              color: '#F5F6EF',
+            },
+          ],
+        },
+        {
+          featureType: 'landscape.man_made',
+          elementType: 'labels.text.fill',
+          stylers: [
+            {
+              color: '#18374F',
+            },
+          ],
+        },
+        {
+          featureType: 'landscape.natural',
+          stylers: [
+            {
+              color: '#D2E9DD',
+            },
+            {
+              saturation: -25,
+            },
+          ],
+        },
+        {
+          featureType: 'landscape.natural',
+          elementType: 'labels.text.fill',
+          stylers: [
+            {
+              color: '#18374F',
+            },
+          ],
+        },
+        {
+          featureType: 'poi',
+          stylers: [
+            {
+              color: '#A7CBB8',
+            },
+            {
+              visibility: 'on',
+            },
+          ],
+        },
+        {
+          featureType: 'poi',
+          elementType: 'labels.text',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'poi.business',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'poi.park',
+          elementType: 'labels.text',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'road',
+          elementType: 'labels.text.fill',
+          stylers: [
+            {
+              color: '#18374F',
+            },
+          ],
+        },
+        {
+          featureType: 'road.arterial',
+          elementType: 'labels',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'road.highway',
+          elementType: 'labels',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'road.local',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'road.local',
+          elementType: 'labels',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'transit.line',
+          stylers: [
+            {
+              color: '#7BB9D3',
+            },
+          ],
+        },
+        {
+          featureType: 'transit.line',
+          elementType: 'labels.text',
+          stylers: [
+            {
+              color: '#18374F',
+            },
+          ],
+        },
+        {
+          featureType: 'transit.line',
+          elementType: 'labels.text.fill',
+          stylers: [
+            {
+              visibility: 'off',
+            },
+          ],
+        },
+        {
+          featureType: 'water',
+          stylers: [
+            {
+              color: '#A6D9EE',
+            },
+          ],
+        },
+        {
+          featureType: 'water',
+          elementType: 'labels.text.fill',
+          stylers: [
+            {
+              color: '#18374F',
+            },
+          ],
+        },
+      ],
+    });
+    // Add a marker on the center of the map
+    assets.map((asset)=>{
+        return new google.maps.Marker({
+          position: { lat: parseFloat(asset.lat), lng: parseFloat(asset.lng) },
+          map: map,
+          title: 'Center Marker',
+          icon: {
+            url:
+              asset.type === 'dock'
+                ? './Dock.png'
+                : asset.type === 'boat'
+                ? './Boat.png'
+                : asset.type === 'jet_ski'
+                ? './Jetski.png'
+                : './Kayak.png',
+            scaledSize: new google.maps.Size(40, 40),
+          },
+        });
+    })
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+initMap();
+
+        </script>
+</body>
+</html>
